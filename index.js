@@ -20,7 +20,9 @@ module.exports = function(cookie, header) {
         req.callback = function(err, res) {
 
             // process each cookie
-            res.headers['set-cookie'].forEach(function(cookie) {
+            var cookies = res.headers['set-cookie'];
+            if (!Array.isArray(cookies)) cookies = [ cookies ];
+            cookies.forEach(function(cookie) {
                 if (!regex.test(cookie)) return;
 
                 // split the cookie
