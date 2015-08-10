@@ -1,0 +1,24 @@
+{
+  "name": "superagent-csrf-middleware",
+  "version": "0.1.0",
+  "description": "easily handle CSRF tokens with superagent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weisjohn/superagent-csrf-middleware.git"
+  },
+  "keywords": [
+    "superagent",
+    "csrf",
+    "lusca"
+  ],
+  "author": "John Weis <weis.john@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weisjohn/superagent-csrf-middleware/issues"
+  },
+  "homepage": "https://github.com/weisjohn/superagent-csrf-middleware#readme"
+}
