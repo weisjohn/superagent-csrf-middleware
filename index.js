@@ -10,8 +10,7 @@ module.exports = function(cookie, header) {
     return function csrf_middleware(req) {
 
         // optionally set the csrf token
-        var csrf = req.agent ? req.agent.csrf : csrf;
-        if (csrf) req.set(header, csrf);
+        if (req.agent.csrf) req.set(header, req.agent.csrf);
 
         // retain reference to old callback
         var callback = req.callback;
@@ -28,12 +27,9 @@ module.exports = function(cookie, header) {
                 // split the cookie
                 var token = cookie.split('=')[1].split(';')[0];
 
-                // decode value to overcome encoding
-                csrf = decodeURIComponent(token);
+                // retain reference to new CSRF token
+                req.agent.csrf = decodeURIComponent(token);
             });
-
-            // retain reference to new CSRF token
-            req.agent.csrf = csrf;
 
             // invoke original callback ref
             return callback.call(req, err, res);
