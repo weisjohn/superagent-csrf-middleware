@@ -6,11 +6,13 @@ module.exports = function(cookie, header) {
     header = header || 'X-' + cookie;
     var regex = new RegExp('^' + cookie);
 
+    var csrf;
+
     // the actual middleware
     return function csrf_middleware(req) {
 
         // optionally set the csrf token
-        if (req.agent.csrf) req.set(header, req.agent.csrf);
+        if (csrf) req.set(header, csrf);
 
         // retain reference to old callback
         var callback = req.callback;
@@ -28,7 +30,8 @@ module.exports = function(cookie, header) {
                 var token = cookie.split('=')[1].split(';')[0];
 
                 // retain reference to new CSRF token
-                req.agent.csrf = decodeURIComponent(token);
+                csrf = decodeURIComponent(token);
+
             });
 
             // invoke original callback ref
