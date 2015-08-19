@@ -9,14 +9,15 @@ Supports simple CSRF implementations and those which modify the token with each 
 ```javascript
 
 var request = require('superagent');
-var csrf = require('superagent-csrf-middleware')();
+var csrf = require('superagent-csrf-middleware');
 var agent = request(server);
 
+var csrf1 = csrf();
 agent.get('/foo')
-    .use(csrf)
+    .use(csrf1)
     .end(function() {
         agent.post('/bar')
-            .use(csrf)
+            .use(csrf1)
             .end(function() {
                 /* ... */
             });
