@@ -1,6 +1,6 @@
 {
   "name": "superagent-csrf-middleware",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "easily handle CSRF tokens with superagent",
   "main": "index.js",
   "scripts": {

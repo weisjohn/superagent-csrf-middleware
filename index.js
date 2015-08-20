@@ -19,6 +19,7 @@ module.exports = function(cookie, header) {
 
         // patch callback to capture token
         req.callback = function(err, res) {
+            if (err || !res) return callback.call(req, err, res);
 
             // process each cookie
             var cookies = res.headers['set-cookie'];
